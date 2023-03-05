@@ -2,8 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>图片peizhi</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+    <title>图片配置</title>
+    <link rel="stylesheet" th:href="@{/material/materialize/css/materialize.min.css}" media="screen,projection"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/jquery-1.10.2.js}"></script>
+    <script th:src="@{/material/materialize/js/materialize.min.js}"></script>
+    <script th:src="@{/js/homeconfig.js}"></script>
+
+    <!--    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>-->
 </head>
 <body class="container">
 <br/>
@@ -11,27 +17,85 @@
 <br/><br/>
 <div class="with:80%">
     <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>图片地址</th>
-            <th>路由</th>
-            <th>title</th>
-            <th>title</th>
-            <th>Edit</th>
 
-        </tr>
-        </thead>
         <tbody>
-        <tr  th:each="config : ${configs}">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">当前配置</h4>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>
+                                    id
+                                </th>
+                                <th>
+                                    图片地址
+                                </th>
+                                <th>
+                                    路由
+                                </th>
+                                <th>
+                                    标题
+                                </th>
+                                <th>
+                                    Extra
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  th:each="config : ${configs}">
+                                <td th:text="${config.id}">neo</td>
+                                <td th:text="${config.imageurl}">neo</td>
+                                <td th:text="${config.url}">Otto</td>
+                                <td th:text="${config.title}">6</td>
+                                <td th:text="${config.extra}">5</td>
 
 
-            <td th:text="${config.imageurl}">neo</td>
-            <td th:text="${config.url}">Otto</td>
-            <td th:text="${config.title}">6</td>
-            <td th:text="${config.extra}">5</td>
-            <td><a th:href="@{/toEdit(id=${config.id})}">edit</a></td>
+                            </tr>
 
-        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">配置修改</h4>
+                <p class="card-description">
+                    仅支持修改，不支持添加，客户端需要兼容
+                </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="myid">id</label>
+                        <input  class="form-control" id="myid" name="myid" placeholder="xxx" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="mypicurl">图片地址</label>
+                        <input  class="form-control" id="mypicurl" name="mypicurl" placeholder="xx" value="22">
+                    </div>
+                    <div class="form-group">
+                        <label for="myurl">url</label>
+                        <input  class="form-control" id="myurl" name="myurl" placeholder="xx" value="333">
+                    </div>
+                    <div class="form-group">
+                        <label for="mytitle">title</label>
+                        <input  class="form-control" id="mytitle" name="mytitle" placeholder="xx" value="4444">
+                    </div>
+                    <div class="form-group">
+                        <label for="myextra">extra</label>
+                        <input  class="form-control" id="myextra" name="myextra" placeholder="xx"  value="5555">
+                    </div>
+                    <button type="submit" class="btn btn-success mr-2"
+                            onclick="update(this)">Submit</button>
+
+                </form>
+            </div>
+        </div>
         </tbody>
     </table>
 </div>
