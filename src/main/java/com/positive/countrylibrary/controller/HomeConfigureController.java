@@ -28,6 +28,7 @@ import javax.annotation.Resource;
 public class HomeConfigureController {
     @Resource
     private HomeConfigService homeConfigService;
+
     @GetMapping("/homeget")
     public JSONObject getContent(){
         JSONObject object = new JSONObject();
